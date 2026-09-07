@@ -1,0 +1,207 @@
+{
+  "brand": {
+    "name": "TNS CREATIONS",
+    "tagline": "Create. Connect. Grow.",
+    "positioning": "Creative + growth-focused digital marketing agency delivering performance marketing, high-converting creatives, and custom web experiences.",
+    "logo_style": "Colorful gradient mark (pink/orange/teal gradient) on deep dark theme"
+  },
+  "theme": {
+    "mode": "dark",
+    "colors": {
+      "background": {
+        "primary": "#07090E",
+        "secondary": "#0D111A",
+        "tertiary": "#131926",
+        "card_bg": "rgba(18, 24, 38, 0.65)",
+        "card_border": "rgba(255, 255, 255, 0.08)"
+      },
+      "text": {
+        "primary": "#F8FAFC",
+        "secondary": "#94A3B8",
+        "muted": "#64748B",
+        "accent": "#A855F7"
+      },
+      "accents": {
+        "purple": "#8B5CF6",
+        "electric_blue": "#3B82F6",
+        "cyan": "#06B6D4",
+        "gradient_primary": "linear-gradient(135deg, #8B5CF6 0%, #3B82F6 50%, #06B6D4 100%)",
+        "gradient_text": "linear-gradient(135deg, #C084FC 0%, #60A5FA 50%, #2DD4BF 100%)",
+        "gradient_glow": "radial-gradient(circle at center, rgba(139, 92, 246, 0.25) 0%, rgba(59, 130, 246, 0.15) 50%, transparent 70%)"
+      },
+      "status": {
+        "success": "#10B981",
+        "warning": "#F59E0B",
+        "whatsapp": "#25D366"
+      }
+    }
+  },
+  "typography": {
+    "headings": {
+      "font_family": "'Sora Variable', 'Space Grotesk Variable', sans-serif",
+      "h1": "text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight",
+      "h3": "text-xl sm:text-2xl font-medium",
+      "h4": "text-lg sm:text-xl font-medium"
+    },
+    "body": {
+      "font_family": "'Inter Variable', 'Manrope Variable', sans-serif",
+      "base": "text-base text-slate-300 leading-relaxed",
+      "small": "text-sm text-slate-400",
+      "label": "text-xs font-semibold tracking-widest uppercase text-purple-400"
+    }
+  },
+  "layout_strategy": {
+    "spacing_scale": "Generous spacing. Section padding: py-20 lg:py-28. Grid gaps: gap-6 lg:gap-8.",
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "header": "Sticky navbar with backdrop-blur-xl bg-[#07090E]/80 border-b border-white/10 z-50",
+    "bento_grid": "Asymmetric multi-span layout mixing tall video previews, metric stat chips, ad dashboards, and social graphics"
+  },
+  "visual_enhancers": {
+    "glassmorphism": "backdrop-blur-xl bg-slate-900/60 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.37)]",
+    "glow_effects": "Subtle blur-3xl colored radial glows behind key cards and hero visual",
+    "borders": "1px solid rgba(255,255,255,0.08) with active hover highlight border-purple-500/50",
+    "noise_texture": "Subtle dark SVG noise overlay on background to break digital flatness"
+  },
+  "motion_and_animations": {
+    "engine": "framer-motion (motion/react) + Lenis momentum smooth scrolling",
+    "hero_reveal": "Masked line-by-line staggered headline entrance with smooth rise and fade-in",
+    "marquee": "Slow editorial text ticker for trust strip 'Creative • Strategy • Performance • Growth'",
+    "hover_states": "Micro-scale lift (-translate-y-1.5), subtle border glow increase, button shine effect",
+    "scroll_reveal": "Staggered viewport entrance for cards and timeline steps"
+  },
+  "required_sections": [
+    {
+      "id": "header",
+      "name": "Sticky Transparent Glass Header",
+      "spec": "Logo on left (colorful gradient mark + TNS CREATIONS text), Nav links (Home, About, Services, Portfolio, Process, Packages, Free Trial, Contact), Right CTA button 'Start Free Trial', Mobile hamburger slide-out drawer."
+    },
+    {
+      "id": "hero",
+      "name": "Kinetic Hero Section",
+      "spec": "Headline: 'Creative Marketing That Turns Attention Into Growth.' with gradient on 'Growth'. Subtitle, Primary CTA 'Start Your 3-Day Free Trial', Secondary CTA 'View Our Work'. Trust tags: Creative Strategy, Performance Marketing, Content Production, Web Experiences. Right side interactive visual: Floating CSS cards (Social Media creative card, Analytics mini chart with Recharts/SVG, Reel video preview, Meta Ad Dashboard card) with floating animated blobs."
+    },
+    {
+      "id": "trust_strip",
+      "name": "Editorial Marquee Ribbon",
+      "spec": "Slow drift marquee featuring 'Creative • Strategy • Performance • Growth' in low-contrast typography with purple accent dots."
+    },
+    {
+      "id": "about",
+      "name": "About TNS CREATIONS",
+      "spec": "'Not Just Another Marketing Agency.' 2-column layout. Left: Agency story & manifesto chapter. Right: Premium glass card showcasing 4 qualitative pillars: Strategy-First Approach, Creative Execution, Transparent Communication, Business-Focused Marketing."
+    },
+    {
+      "id": "services",
+      "name": "Core Marketing Services",
+      "spec": "'Everything Your Brand Needs to Grow Online.' 6 interactive service cards: 1. Social Media Management, 2. Graphic Design & Branding, 3. Video Editing & Reels, 4. Meta Ads & Lead Generation, 5. Google Ads, 6. Website Design & Development. Unique Lucide icons, hover glow, 'Explore Service' detail modal/drawer."
+    },
+    {
+      "id": "why_choose",
+      "name": "Why Choose TNS CREATIONS",
+      "spec": "'Creative Thinking. Business-Focused Execution.' 6 benefit blocks: Dedicated Account Support, Professional Creative Quality, Fast Turnaround, Transparent Communication, Performance-Focused Strategy, Flexible Growth Packages."
+    },
+    {
+      "id": "free_trial",
+      "name": "3-Day Free Trial Spotlight",
+      "spec": "'Experience TNS Before You Commit.' Glowing gradient highlighted card. Benefits checklist: Marketing Audit, 1 Professional Social Media Creative, 1 Short Reel/Video Concept, Growth Strategy Recommendations, Recommended Marketing Package. Clear disclaimer box (No paid ad budget included, No guaranteed leads/sales, No unlimited revisions). CTA 'Claim Your 3-Day Free Trial'."
+    },
+    {
+      "id": "portfolio",
+      "name": "Selected Work Portfolio",
+      "spec": "'Selected Work.' Filter tabs: All, Social Media, Branding, Reels, Advertising, Websites. Masonry bento grid of rich styled project cards with realistic campaign previews and stats. Clicking opens Lightbox/Modal with full case breakdown."
+    },
+    {
+      "id": "process",
+      "name": "6-Step Growth Timeline",
+      "spec": "'From Idea to Growth.' 6-step horizontal desktop / vertical mobile timeline: 01. Discover, 02. Strategy, 03. Create, 04. Launch, 05. Optimize, 06. Grow. Numbered manifesto style."
+    },
+    {
+      "id": "packages",
+      "name": "Growth Packages & Pricing",
+      "spec": "'Simple Plans. Serious Growth.' 3 tier pricing cards: Starter (₹7,999/mo), Growth (₹15,999/mo - 'Most Popular' gradient badge), Business Growth (₹24,999/mo). Included deliverables checklist + 'Suitable for' tag + CTA button. Ad spend disclaimer note."
+    },
+    {
+      "id": "industries",
+      "name": "Industries We Serve",
+      "spec": "'Marketing Built Around Your Business.' 8 industry focus cards: Restaurants & Cafes, Gyms & Fitness, Education & Institutes, Technology & IT, Internet Service Providers, Real Estate, Local Businesses, Professional Services."
+    },
+    {
+      "id": "testimonials",
+      "name": "Client Testimonials",
+      "spec": "'What Clients Say.' Grid of clearly labelled placeholder testimonial cards: 'Client testimonial will appear here.' with client role & industry indicators."
+    },
+    {
+      "id": "lead_gen_audit",
+      "name": "Free Marketing Audit Form",
+      "spec": "'Want to Know What Your Business Can Improve Online?' Interactive form: Full Name, Business Name, Phone, Email, Website/Instagram URL, Service Required (Dropdown), Monthly Marketing Budget (Dropdown), Message. CTA 'Request Free Audit'. Form submits to backend database API (/api/audit-requests or local state)."
+    },
+    {
+      "id": "final_cta",
+      "name": "High-Impact Conversion Banner",
+      "spec": "'Ready to Build a Brand People Remember?' Dual CTAs: 'Start Free Trial' and 'Book Consultation'."
+    },
+    {
+      "id": "contact",
+      "name": "Contact & Direct Channels",
+      "spec": "Brand contact block, placeholder Phone/Email/Website, WhatsApp Direct button (+91 direct link), Email button, Interactive Google Maps preview card."
+    },
+    {
+      "id": "footer",
+      "name": "Agency Footer",
+      "spec": "Logo, tagline, Quick Navigation links, Services links, Legal links (Privacy Policy, Terms of Service, Refund Policy), © 2026 TNS CREATIONS."
+    }
+  ],
+  "image_urls": [
+    {
+      "category": "agency_collaboration",
+      "url": "https://images.unsplash.com/photo-1758613654460-0ef9c8c75197?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "description": "Digital marketing strategy session with team on laptop"
+    },
+    {
+      "category": "creative_studio",
+      "url": "https://images.unsplash.com/photo-1777923311883-c9c06e4d8aba?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "description": "Designers collaborating on brand identity and moodboard"
+    },
+    {
+      "category": "social_media_production",
+      "url": "https://images.unsplash.com/photo-1643503640904-75c1a2093570?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "description": "Social media platform icons array"
+    },
+    {
+      "category": "content_creator_laptop",
+      "url": "https://images.unsplash.com/photo-1559854036-2409f22a918a?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "description": "Editing workstation display"
+    }
+  ],
+  "test_ids": {
+    "header_nav": "nav-header",
+    "cta_free_trial_header": "header-free-trial-button",
+    "cta_hero_free_trial": "hero-free-trial-button",
+    "cta_hero_view_work": "hero-view-work-button",
+    "service_card_prefix": "service-card-",
+    "portfolio_tab_prefix": "portfolio-tab-",
+    "package_card_prefix": "package-card-",
+    "lead_form": "lead-audit-form",
+    "lead_input_name": "audit-input-name",
+    "lead_input_email": "audit-input-email",
+    "lead_input_phone": "audit-input-phone",
+    "lead_submit_button": "audit-submit-button",
+    "whatsapp_button": "contact-whatsapp-button",
+    "free_trial_claim_button": "claim-free-trial-button"
+  },
+  "instructions_to_main_agent": [
+    "Ensure all 16 required sections are implemented cleanly with generous spacing and dark mode aesthetics.",
+    "Use backdrop-blur glassmorphism cards with subtle 1px white/10 borders and radial purple/blue glows.",
+    "Hook up lead audit form, free trial claim modal, and consultation booking modal with toast notifications (sonner) and local API persistence.",
+    "Add 'data-testid' to all buttons, links, inputs, and key action components.",
+    "Ensure responsive design from 320px mobile up to 4K displays.",
+    "Use Lucide icons for services, features, and contact channels."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "Do not use dark colors as heavy flat gradients, keep dark backgrounds deep (#07090E) with subtle radial glow spots.",
+    "Ensure high contrast WCAG AA readability for all text elements over dark backgrounds.",
+    "Never use raw transparent backgrounds on sticky header or dropdowns; always apply backdrop-blur and semi-opaque background color.",
+    "Maintain smooth micro-interactions across hover states and form inputs."
+  ]
+}
