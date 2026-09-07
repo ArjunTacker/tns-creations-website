@@ -68,6 +68,11 @@ export function Footer() {
                 Terms & Conditions
               </a>
             </li>
+            <li>
+              <a href="/login" data-testid="footer-admin-login-link" className="text-sm text-slate-400 transition-colors hover:text-white">
+                Team Login
+              </a>
+            </li>
           </ul>
         </div>
       </div>

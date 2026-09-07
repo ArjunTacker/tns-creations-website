@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import List, Literal, Optional
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, Depends
 from pydantic import BaseModel, Field, field_validator
 from starlette.middleware.cors import CORSMiddleware
 
@@ -17,11 +17,14 @@ ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
 from lib.db import client, db, ensure_indexes
+from lib.auth import require_admin, seed_admin
+from routers.auth import router as auth_router
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     app.state.index_task = asyncio.create_task(ensure_indexes())
+    await seed_admin()
     yield
     client.close()
 
@@ -71,12 +74,13 @@ async def create_lead(payload: LeadCreate):
 
 
 @api_router.get("/leads", response_model=List[Lead])
-async def list_leads():
+async def list_leads(_admin: dict = Depends(require_admin)):
     docs = await db.leads.find({}, {"_id": 0}).sort("created_at", -1).to_list(500)
     return docs
 
 
 app.include_router(api_router)
+app.include_router(auth_router)
 
 app.add_middleware(
     CORSMiddleware,

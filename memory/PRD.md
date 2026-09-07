@@ -30,6 +30,13 @@ Build a premium, dark-themed, high-converting marketing website for digital agen
 - SEO: meta title/description, OG tags, canonical placeholder, ProfessionalService JSON-LD
 - Responsive verified at 1920px and 390px; no horizontal overflow; no console errors
 
+## Implemented (v2 — Sept 2026: Auth + Leads Dashboard)
+- Email/password login (bcrypt, 5-attempt/15-min lockout) + Emergent-managed Google sign-in, unified opaque sessions (`user_sessions`, 7-day, httpOnly `session_token` cookie)
+- Backend: `lib/auth.py`, `routers/auth.py` — POST /api/auth/login, /session (Google exchange), GET /me, POST /logout; seeded admin from `ADMIN_EMAIL`/`ADMIN_PASSWORD`; `ADMIN_EMAILS` allowlist grants admin role to Google accounts
+- `GET /api/leads` now admin-only (403 for role=user)
+- Frontend: `/login` (both options), `/admin` protected leads dashboard (count cards + type filter + table + refresh + logout), `AuthProvider`, `ProtectedRoute`, `AuthCallback` hash detection in `App.tsx`; footer "Team Login" link
+- Tested: iteration_1 — 7/7 backend, 15/15 frontend pass. Credentials in `/app/memory/test_credentials.md`; playbook `/app/auth_testing.md`
+
 ## Known Placeholders (intentional, per brief)
 - Phone / WhatsApp / email / domain in `src/config/site.ts` — swap when real details arrive
 - Portfolio project frames and testimonial cards — clearly labelled placeholders
@@ -38,8 +45,10 @@ Build a premium, dark-themed, high-converting marketing website for digital agen
 
 ## Backlog (prioritized)
 - P0: Wire real contact details (phone, WhatsApp, email, domain) into config
-- P0: Leads inbox — password-protected view of `/api/leads`
+- P0: Add owner's Google email to `ADMIN_EMAILS` (backend/.env) so Google sign-in gets admin access
 - P1: Email notification on new lead (Resend)
+- P1: Lead status (new/contacted/closed) + notes in dashboard; CSV export
+- P1: Explicit CORS_ORIGINS instead of `*` (flagged in code review; harmless while same-origin)
 - P1: Replace portfolio/testimonial placeholders with real client work
 - P2: Real Google Maps embed, legal pages, blog/case-study routes
 - P2: Lighthouse audit + image optimization pass

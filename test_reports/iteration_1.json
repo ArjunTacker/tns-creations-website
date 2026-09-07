@@ -1,0 +1,37 @@
+{
+  "summary": "Tested TNS Creations auth (email/password + Emergent Google) and admin leads dashboard end-to-end. 7/7 backend pytest cases pass. 15/15 frontend Playwright checks pass, including cookie-injected non-admin Google user seeing the Access pending screen. Login attempts collection cleared after tests so seeded admin is not locked out.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": [
+    "/app/backend/tests/test_auth_and_leads.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "server.py: CORSMiddleware uses allow_credentials=True with CORS_ORIGINS='*' (backend/.env). Browsers reject credentialed CORS with wildcard origin. It currently works because frontend uses same-origin relative /api paths via Vite proxy, but if any cross-origin caller is added this will break. Recommend setting CORS_ORIGINS to explicit origin(s).",
+    "server.py: app.add_middleware(CORSMiddleware, ...) is added AFTER app.include_router(...). Starlette applies middleware in reverse insertion order and this ordering still works, but it's more idiomatic (and safer for exception handling) to register CORS before including routers.",
+    "auth.py logout: response.delete_cookie(..., secure=True, samesite='none') — httpOnly flag not re-set on delete. Minor; browsers still clear the cookie by name+path.",
+    "routers/auth.py login: on successful password verification, calls upsert_user() which re-computes role from ADMIN_EMAILS. If a seeded admin email is later removed from ADMIN_EMAIL/ADMIN_EMAILS env, the admin flag gets demoted on next login. Documented behavior but worth noting.",
+    "Google session exchange creates a session using the token returned by Emergent (data.get('session_token')) but sets it on same 'session_token' cookie. Fine, but if Emergent token format collides with local secrets.token_urlsafe(48) it doesn't matter — just consistency.",
+    "No rate limiting on /api/leads POST (public endpoint). Consider adding basic per-IP throttling to avoid spam."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_auth_and_leads.py"
+  ],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "test_credentials": "admin@tnscreations.in / TnsAdmin@2026 (seeded via ADMIN_EMAIL/ADMIN_PASSWORD in backend/.env)",
+  "seed_data_creation": "Temporarily inserted one non-admin user + session in mongo to test /admin Access-pending screen; cleaned up. login_attempts collection cleared to prevent lockout of seeded admin.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Backend tests live at /app/backend/tests/test_auth_and_leads.py — autouse fixture wipes login_attempts around each test. Frontend uses relative /api via Vite proxy; public URL https://growth-agency-74.preview.emergentagent.com. For non-admin Google user simulation via browser, inject cookie session_token (httpOnly, secure, sameSite None) after inserting user+session per /app/auth_testing.md. Google button correctly navigates to https://auth.emergentagent.com (auto-redirects to /oauth/) with redirect=<origin>/admin.",
+  "test_flows_executed": [
+    "POST /auth/login success sets cookie; /auth/me + /leads via cookie; POST /auth/logout invalidates session (401 on next /me).",
+    "GET /leads without auth → 401.",
+    "Wrong password → 401 'Invalid email or password'.",
+    "5 wrong passwords → 6th attempt returns 429 (lockout).",
+    "POST /auth/session with bogus id → 401.",
+    "Simulated Google user (mongo insert): /auth/me → 200 role=user; /leads → 403.",
+    "Public POST /leads (regression) → 201 with generated id.",
+    "Frontend: /admin unauthenticated → /login; email validation errors; password required error; wrong password shows login-server-error; Google button navigates to auth.emergentagent.com with correct redirect; admin login shows dashboard with filter/count cards and refresh; logout returns to /login and re-guards /admin; homepage header-free-trial-button opens lead-modal-form; footer-admin-login-link points to /login; non-admin Google user via cookie injection sees admin-no-access 'Access pending'."
+  ]
+}
